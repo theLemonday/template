@@ -1,0 +1,21 @@
+[project]
+name = "{{ cookiecutter.project_slug }}"
+version = "0.1.0"
+description = "{{ cookiecutter.description }}"
+authors = [{ name = "{{ cookiecutter.author_name }}" }]
+readme = "README.md"
+requires-python = ">= {{ cookiecutter.python_version }}"
+
+dependencies = [
+	"numpy",
+	"pandas",
+	"scikit-learn",
+	"scipy",
+	"matplotlib",
+	"seaborn",
+	"pyyaml",
+	"joblib",
+]
+
+[tool.basedpyright]
+typeCheckingMode = "basic"

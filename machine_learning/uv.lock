@@ -1,0 +1,8 @@
+version = 1
+revision = 3
+requires-python = ">= {{ cookiecutter.python_version }}"
+
+[[package]]
+name = "machine-learning"
+version = "0.1.0"
+source = { virtual = "." }
