@@ -1,0 +1,46 @@
+---
+repos:
+  - repo: local
+    hooks:
+      - id: check-added-large-files
+        name: check for added large files
+        # A simple shell command to check file sizes (limit 500kb here)
+        entry: bash -c 'find . -type f -size +500k -not -path "./.git/*" | grep .
+          && exit 1 || exit 0'
+        language: system
+
+      - id: check-merge-conflict
+        name: check for merge conflicts
+        # Grep for standard git merge markers
+        entry: grep -Irn "^<<<<<<< " .
+        language: system
+        types: [text]
+
+      - id: prettierd
+        name: prettierd
+        entry: prettierd
+        language: system
+        types_or:
+          - javascript
+          - jsx
+          - ts
+          - tsx
+          - css
+          - html
+          - json
+          - yaml
+          - markdown
+
+      - id: hadolint
+        name: hadolint
+        entry: hadolint
+        language: system
+        types: [dockerfile]
+
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        types: [shell]
+
+      # TODO: add conventional commit

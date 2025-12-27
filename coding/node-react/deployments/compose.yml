@@ -1,0 +1,28 @@
+---
+services:
+  frontend:
+    build:
+      context: ..
+      dockerfile: developments/Dockerfile
+      target: dev
+      args:
+        BASE_REGISTRY: ${BASE_REGISTRY:-}
+    ports: [5173:5173]
+    environment: [NODE_ENV=development]
+    develop:
+      watch:
+        # Sync source code instantly (Hot Reload)
+        - action: sync
+          path: ./src
+          target: /app/src
+          ignore:
+            - node_modules/
+        # Sync public assets
+        - action: sync
+          path: ./public
+          target: /app/public
+        # Reinstall modules if package.json changes
+        - action: rebuild
+          path: package.json
+        - action: rebuild
+          path: pnpm-lock.yaml

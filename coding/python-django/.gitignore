@@ -1,0 +1,46 @@
+ # --- Python & Runtime ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual Environments (uv/venv) ---
+# uv creates this by default
+.venv/
+venv/
+env/
+
+# --- Django ---
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# --- Testing & Quality Assurance ---
+.coverage
+htmlcov/
+.pytest_cache/
+# Ruff cache (since you use ruff)
+.ruff_cache/
+# MyPy cache
+.mypy_cache/
+
+# --- Environment Variables (Security) ---
+.env
+.env.*
+!.env.example
+!.env.template
+
+# --- Editor/IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+Session.vim
+dump.rdb
+
+# --- Distribution ---
+dist/
+build/
+*.egg-info/

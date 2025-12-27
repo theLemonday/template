@@ -1,0 +1,36 @@
+# --- Dependencies (CRITICAL) ---
+# Prevent host architecture binaries from breaking container
+node_modules/
+.pnpm-store/
+
+# --- Git Metadata ---
+# Saves huge amount of space in build context
+.git/
+.gitignore
+.dockerignore
+
+# --- Build Artifacts ---
+# We build inside the container, so don't copy old local builds
+dist/
+build/
+coverage/
+
+# --- Docker & DevOps ---
+# Don't copy the Dockerfile into the image itself
+Dockerfile*
+docker-compose*.yaml
+Makefile
+README.md
+
+# --- Editor & System ---
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*.swo
+*.md
+
+# --- Local Environment ---
+# Prevent leaking local secrets into the image
+.env*
+!.env.example

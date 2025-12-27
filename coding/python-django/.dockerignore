@@ -1,0 +1,37 @@
+# --- Critical Exclusions ---
+.git/
+.gitignore
+.dockerignore
+.venv/
+venv/
+
+# --- Django/Data ---
+# Never copy local DB or media to the image
+db.sqlite3
+media/
+staticfiles/
+
+# --- Caches & Tests ---
+# Don't bloat the image layer with test caches
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Documentation ---
+docs/
+README.md
+LICENSE
+
+# --- Editor Junk ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Secrets ---
+# Prevent accidental COPY . . of secrets
+.env*
+!.env.example
