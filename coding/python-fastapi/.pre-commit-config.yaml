@@ -1,0 +1,33 @@
+repos:
+  - repo: local
+    hooks:
+      # --- Python (Ruff) ---
+      # Replaces Black, Flake8, Isort (Fast & Offline)
+      - id: ruff-check
+        name: ruff check
+        entry: ruff check --force-exclude --fix
+        language: system
+        types: [python]
+        require_serial: true
+
+      - id: ruff-format
+        name: ruff format
+        entry: ruff format --force-exclude
+        language: system
+        types: [python]
+        require_serial: true
+
+      # --- Infrastructure (Docker) ---
+      - id: hadolint
+        name: hadolint
+        entry: hadolint
+        language: system
+        types: [dockerfile]
+
+      # --- Shell Scripts ---
+      - id: shellcheck
+        name: shellcheck
+        entry: shellcheck
+        language: system
+        types: [shell]
+        args: ["--severity=warning"]

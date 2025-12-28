@@ -39,7 +39,7 @@ build-dev: verify-input ## Build the Development stage (includes deps)
 	@echo "Building Dev image for $(MODULE_NAME)..."
 	docker build \
 		--target dev \
-		--build-arg BASE_REGISTRY=$(REGISTRY)/ \
+		--build-arg IMAGE_REGISTRY=$(REGISTRY)/ \
 		-t $(IMAGE_TAG):dev .
 
 test: build-dev ## Run tests inside the Dev container
@@ -51,7 +51,7 @@ build-prod: verify-input ## Build the Production stage (Optimized)
 	@echo "Building Prod image..."
 	docker build \
 		--target prod \
-		--build-arg BASE_REGISTRY=$(REGISTRY)/ \
+		--build-arg IMAGE_REGISTRY=$(REGISTRY)/ \
 		-t $(IMAGE_TAG):$(VERSION) \
 		-t $(IMAGE_TAG):latest .
 

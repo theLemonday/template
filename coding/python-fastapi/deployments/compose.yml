@@ -1,0 +1,34 @@
+---
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: deployments/Dockerfile
+      target: dev
+    ports: [8000:8000]
+    environment: [APP_ENV=development]
+    develop:
+      watch:
+        # Hot reload Python code
+        - action: sync
+          path: ../app
+          target: /app/app
+          # --- ADDED IGNORE LIST HERE ---
+          ignore:
+            - __pycache__/
+            - .pyc
+            - .pyo
+            - .venv/
+            - .mypy_cache/
+            - .pytest_cache/
+            - .ruff_cache/
+
+        - action: sync
+          path: ../main.py
+          target: /app/main.py
+
+        # Rebuild if deps change
+        - action: rebuild
+          path: ../uv.lock
+        - action: rebuild
+          path: ../pyproject.toml

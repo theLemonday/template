@@ -5,7 +5,7 @@ services:
       context: .
       target: dev
       args:
-        BASE_REGISTRY: ${BASE_REGISTRY:-}
+        IMAGE_REGISTRY: ${IMAGE_REGISTRY:-}
     ports: [8000:8000]
     environment:
       - DEBUG=1

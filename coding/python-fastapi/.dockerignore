@@ -1,0 +1,41 @@
+# --- Critical Exclusions ---
+.git/
+.gitignore
+.dockerignore
+
+# --- Virtual Environment ---
+# NEVER copy the local venv. The Dockerfile builds its own.
+.venv/
+venv/
+
+# --- Build & Test Artifacts ---
+# Keep the build context small (~KB instead of ~MB)
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# --- Documentation & Metadata ---
+README.md
+LICENSE
+docs/
+
+# --- Dev Configs ---
+# Don't copy Docker configs into the image
+docker-compose*.yaml
+Makefile
+Dockerfile
+
+# --- Secrets ---
+.env*
+!.env.example
+
+# --- Editor Junk ---
+.vscode/
+.idea/
+*.swp
+*.swo
